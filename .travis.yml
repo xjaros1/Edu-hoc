@@ -1,4 +1,9 @@
 language: c
+install:
+- sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty main universe"
+- sudo apt-get update -q
+- sudo apt-get install avrdude arduino
+
 compiler:
 - gcc
 script: script/runtests.sh
