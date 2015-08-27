@@ -15,7 +15,7 @@ for dir in *; do
 		echo $CWD
 		cd $dir
 
-		cp ../Makefile_CI.mk Makefile
+		cp ../../Makefile_CI.mk Makefile
 
 		make clean
 		make PROJECT_DIR=$CWD ARDUINO_DIR=$ARDUINO AVR_TOOLS_DIR=$AVR_GCC
@@ -43,7 +43,7 @@ for dir in *; do
 
 		cd $dir
 
-		cp ../Makefile_CI.mk Makefile
+		cp ../../Makefile_CI.mk Makefile
 
 		make clean
 		make PROJECT_DIR=$CWD ARDUINO_DIR=$ARDUINO AVR_TOOLS_DIR=$AVR_GCC
