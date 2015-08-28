@@ -4,7 +4,7 @@ failures=()
 echo "DIRECTORY CONTENT:"
 ls -Rla
 echo "BUILDS"
-
+CWD="$(pwd)/"
 cd src
 for dir in *; do
 
