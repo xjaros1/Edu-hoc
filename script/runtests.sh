@@ -5,59 +5,61 @@ echo "DIRECTORY CONTENT:"
 ls -Rla
 echo "BUILDS"
 CWD="$(pwd)/"
-cd src
-for dir in *; do
+which avr-g++
 
-	if [ -d "${dir}" ]; then
+#cd src
+#for dir in *; do
+#
+#	if [ -d "${dir}" ]; then
+#
+#		echo "Compiling $dir...\n"
+#
+#		echo $CWD
+#		cd $dir
+#
+#		cp ../../Makefile_CI.mk Makefile
+#
+#		make clean
+#		make PROJECT_DIR=$CWD ARDUINO_DIR=$ARDUINO AVR_TOOLS_DIR=$AVR_GCC
+#
+#		if [[ $? -ne 0 ]]; then
+#			failures+=("$dir")
+#			echo "Source $dir failed"
+#		fi
+#
+#		cd ..
 
-		echo "Compiling $dir...\n"
+#	fi
 
-		echo $CWD
-		cd $dir
+#done
 
-		cp ../../Makefile_CI.mk Makefile
+#cd test
 
-		make clean
-		make PROJECT_DIR=$CWD ARDUINO_DIR=$ARDUINO AVR_TOOLS_DIR=$AVR_GCC
+#echo "TESTS"
 
-		if [[ $? -ne 0 ]]; then
-			failures+=("$dir")
-			echo "Source $dir failed"
-		fi
+#for dir in *; do
 
-		cd ..
+#	if [ -d "${dir}" ]; then
 
-	fi
+#		echo "Compiling $dir...\n"
 
-done
+#		cd $dir
 
-cd test
+#		cp ../../Makefile_CI.mk Makefile
 
-echo "TESTS"
+#		make clean
+#		make PROJECT_DIR=$CWD ARDUINO_DIR=$ARDUINO AVR_TOOLS_DIR=$AVR_GCC
 
-for dir in *; do
+#		if [[ $? -ne 0 ]]; then
+#			failures+=("$dir")
+#			echo "Test $dir failed"
+#		fi
 
-	if [ -d "${dir}" ]; then
+#		cd ..
 
-		echo "Compiling $dir...\n"
+#	fi
 
-		cd $dir
-
-		cp ../../Makefile_CI.mk Makefile
-
-		make clean
-		make PROJECT_DIR=$CWD ARDUINO_DIR=$ARDUINO AVR_TOOLS_DIR=$AVR_GCC
-
-		if [[ $? -ne 0 ]]; then
-			failures+=("$dir")
-			echo "Test $dir failed"
-		fi
-
-		cd ..
-
-	fi
-
-done
+#done
 
 if [[ ${#failures[@]} -ne 0 ]]; then
 	echo "\nThe following builds failed:"
